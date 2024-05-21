@@ -1,10 +1,5 @@
-
 def solution(input_file):
-    max_cubes = {
-        'red': 12,
-        'green': 13,
-        'blue': 14,
-    }
+    max_cubes = {'red': 12, 'green': 13, 'blue': 14}
     sum_of_possible_games_ids = 0
     with open(input_file) as file:
         for line in file:
