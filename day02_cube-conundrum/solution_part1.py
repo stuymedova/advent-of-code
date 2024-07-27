@@ -1,4 +1,7 @@
-def solution(input_file):
+import os
+
+
+def main(input_file):
     max_cubes = {'red': 12, 'green': 13, 'blue': 14}
     sum_of_possible_games_ids = 0
     with open(input_file) as file:
@@ -25,6 +28,8 @@ def solution(input_file):
     return sum_of_possible_games_ids
 
 
-file_path = 'input.txt'
-res = solution(file_path)
-print(res)
+if __name__ == '__main__':
+    dirname = os.path.dirname(__file__)
+    file_path = os.path.join(dirname, 'input.txt')
+    res = main(file_path)
+    print(res)

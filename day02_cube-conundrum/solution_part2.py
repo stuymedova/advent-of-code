@@ -1,4 +1,7 @@
-def solution(input_file):
+import os
+
+
+def main(input_file):
     sum_of_min_set_powers = 0
     with open(input_file) as file:
         for line in file:
@@ -17,6 +20,8 @@ def solution(input_file):
     return sum_of_min_set_powers
 
 
-file_path = 'input.txt'
-res = solution(file_path)
-print(res)
+if __name__ == '__main__':
+    dirname = os.path.dirname(__file__)
+    file_path = os.path.join(dirname, 'input.txt')
+    res = main(file_path)
+    print(res)
