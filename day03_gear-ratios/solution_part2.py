@@ -1,14 +1,29 @@
+import sys
 import os
 
 
-def main(input_file):
-    matrix = []
-    with open(input_file) as file:
+def main():
+    data = handle_input()
+    sum = get_sum_of_gear_ratios(data)
+    print(sum)
+
+
+def handle_input():
+    dirname = os.path.dirname(__file__)
+    file_path = os.path.join(
+        dirname,
+        sys.argv[1] if len(sys.argv) == 2 else 'input.txt'
+    )
+    data = []
+    with open(file_path) as file:
         for line in file:
-            line = line.rstrip('/n')
             if len(line) == 0:
                 continue
-            matrix.append(line)
+            data.append(line)
+    return data
+
+
+def get_sum_of_gear_ratios(matrix):
     sum = 0
     gear_candidates = find_gear_candidates(matrix)
     for i, j in gear_candidates:
@@ -65,7 +80,4 @@ def get_number_by_start_coordinates(matrix, i, j):
 
 
 if __name__ == '__main__':
-    dirname = os.path.dirname(__file__)
-    file_path = os.path.join(dirname, 'input.txt')
-    res = main(file_path)
-    print(res)
+    main()

@@ -1,14 +1,29 @@
+import sys
 import os
 
 
-def main(input_file):
-    matrix = []
-    with open(input_file) as file:
+def main():
+    data = handle_input()
+    sum = get_sum_of_part_numbers(data)
+    print(sum)
+
+
+def handle_input():
+    dirname = os.path.dirname(__file__)
+    file_path = os.path.join(
+        dirname,
+        sys.argv[1] if len(sys.argv) == 2 else 'input.txt'
+    )
+    data = []
+    with open(file_path) as file:
         for line in file:
-            line = line.rstrip('/n')
             if len(line) == 0:
                 continue
-            matrix.append(line)
+            data.append(line)
+    return data
+
+
+def get_sum_of_part_numbers(matrix):
     sum = 0
     for i, line in enumerate(matrix):
         cur_number = ''
@@ -40,7 +55,4 @@ def has_symbol_adjacent_to(matrix, i, j):
 
 
 if __name__ == '__main__':
-    dirname = os.path.dirname(__file__)
-    file_path = os.path.join(dirname, 'input.txt')
-    res = main(file_path)
-    print(res)
+    main()
